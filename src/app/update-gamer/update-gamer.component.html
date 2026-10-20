@@ -1,0 +1,35 @@
+<div class="container">
+  <div>
+    <h2>Modifier un Gamer :</h2>
+  </div>
+  <form>
+    <div class="col-sm-2 col-md-2 col-lg-2">
+      <label>ID Gamer</label>
+      <input type="number" [(ngModel)]="currentGamer.idGamer" name="idGamer" class="form-control" readonly>
+    </div>
+    <div class="col-sm-4 col-md-4 col-lg-4">
+      <label>Pseudo Gamer</label>
+      <input type="text" [(ngModel)]="currentGamer.pseudoGamer" name="pseudoGamer" class="form-control">
+    </div>
+    <div class="col-sm-2 col-md-2 col-lg-2">
+      <label>Score Gamer</label>
+      <input type="number" [(ngModel)]="currentGamer.scoreGamer" name="scoreGamer" class="form-control">
+    </div>
+    <div class="col-sm-4 col-md-4 col-lg-4">
+      <label>Date inscription</label>
+      <input type="date" [(ngModel)]="dateStr" name="dateInscription" class="form-control">
+    </div>
+    <div class="col-sm-4 col-md-4 col-lg-4">
+      <label>Genre</label>
+      <select [(ngModel)]="updatedIdGenre" name="idGenre" class="form-select">
+        @for (g of genres; track g.idGenre) {
+          <option [ngValue]="g.idGenre">{{g.nomGenre}}</option>
+        }
+      </select>
+    </div>
+    <div class="mt-2">
+      <button type="submit" (click)="updateGamer()" class="btn btn-warning me-2">Modifier</button>
+      <a routerLink="/gamers" class="btn btn-secondary">Annuler</a>
+    </div>
+  </form>
+</div>
