@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="card shadow mb-4">
+    <div class="card-body">
+      <table class="table table-striped">
+        <tr>
+          <th>N°</th><th>Id</th><th>Pseudo</th><th>Score</th><th>Date Inscription</th><th>Genre</th><th>Actions</th>
+        </tr>
+        @for (gamer of gamers; track gamer.idGamer; let index = $index; let nbr = $count; let first = $first) {
+          @if (first) {
+            <h1>Nombre : {{nbr}}</h1>
+          }
+          <tbody>
+            <tr>
+              <td>{{index}}</td>
+              <td>{{gamer.idGamer}}</td>
+              <td>{{gamer.pseudoGamer}}</td>
+              <td>{{gamer.scoreGamer}}</td>
+              <td>{{gamer.dateInscription | date:'dd/MM/yyyy'}}</td>
+              <td>{{gamer.genre?.nomGenre}}</td>
+              <td><app-actions [gamer]="gamer" /></td>
+            </tr>
+          </tbody>
+        } @empty {
+          <h1>Aucun gamer trouvé !</h1>
+        }
+      </table>
+    </div>
+  </div>
+</div>

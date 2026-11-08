@@ -1,0 +1,16 @@
+<nav class="navbar navbar-expand navbar-dark bg-dark px-3">
+  <a class="navbar-brand" routerLink="/gamers">Gestion Gamer</a>
+  <div class="dropdown">
+    <button class="btn btn-secondary dropdown-toggle" type="button" (click)="menuOpen = !menuOpen">
+      Liste
+    </button>
+    <ul class="dropdown-menu" [class.show]="menuOpen">
+      <li><a class="dropdown-item" routerLink="/recherche-par-genre" (click)="menuOpen = false">Recherche par genre</a></li>
+  <li><a class="dropdown-item" routerLink="/recherche-par-pseudo" (click)="menuOpen = false">Recherche par pseudo (keyup)</a></li>
+  <li><a class="dropdown-item" routerLink="/recherche-par-pseudo-pipe" (click)="menuOpen = false">Recherche par pseudo (pipe)</a></li>
+      <li><a class="dropdown-item" routerLink="/gamers" (click)="menuOpen = false">Accueil</a></li>
+      <li><a class="dropdown-item" routerLink="/add-gamer" (click)="menuOpen = false">Ajouter gamer</a></li>
+    </ul>
+  </div>
+</nav>
+<router-outlet />

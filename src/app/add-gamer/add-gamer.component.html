@@ -1,0 +1,36 @@
+<div class="container">
+  <div>
+    <h2>Ajouter un Gamer :</h2>
+  </div>
+  <form>
+    <div class="col-sm-2 col-md-2 col-lg-2">
+      <label>ID Gamer</label>
+      <input type="number" [(ngModel)]="newGamer.idGamer" name="idGamer" class="form-control">
+    </div>
+    <div class="col-sm-4 col-md-4 col-lg-4">
+      <label>Pseudo Gamer</label>
+      <input type="text" [(ngModel)]="newGamer.pseudoGamer" name="pseudoGamer" class="form-control">
+    </div>
+    <div class="col-sm-2 col-md-2 col-lg-2">
+      <label>Score Gamer</label>
+      <input type="number" [(ngModel)]="newGamer.scoreGamer" name="scoreGamer" class="form-control">
+    </div>
+    <div class="col-sm-4 col-md-4 col-lg-4">
+      <label>Date inscription</label>
+      <input type="date" [(ngModel)]="newGamer.dateInscription" name="dateInscription" class="form-control">
+    </div>
+
+    <div class="col-sm-4 col-md-4 col-lg-4">
+  <label>Genre</label>
+  <select [(ngModel)]="newIdGenre" name="idGenre" class="form-select">
+    @for (g of genres; track g.idGenre) {
+      <option [ngValue]="g.idGenre">{{g.nomGenre}}</option>
+    }
+  </select>
+</div>
+
+    <div class="mt-2">
+      <button type="submit" (click)="addGamer()" class="btn btn-success">Ajouter</button>
+    </div>
+  </form>
+</div>

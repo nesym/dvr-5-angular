@@ -1,0 +1,33 @@
+<div class="container">
+  <form class="form-inline">
+    <div class="form-group mx-sm-3 mb-2 mt-2">
+      <label>Pseudo Gamer en tapant</label>
+      <input class="form-control" #searchTerm (keyup)="onKeyUp(searchTerm.value)">
+    </div>
+  </form>
+
+  <div class="card shadow mb-4">
+    <div class="card-body">
+      <table class="table table-striped">
+        <tr>
+          <th>Id</th><th>Pseudo</th><th>Score</th><th>Date Inscription</th><th>Genre</th>
+        </tr>
+        @for (gamer of gamers; track gamer.idGamer) {
+          <tbody>
+            <tr>
+              <td>{{gamer.idGamer}}</td>
+              <td>{{gamer.pseudoGamer}}</td>
+              <td>{{gamer.scoreGamer}}</td>
+              <td>{{gamer.dateInscription | date:'dd/MM/yyyy'}}</td>
+              @if (gamer.genre) {
+                <td>{{gamer.genre.nomGenre}}</td>
+              } @else {
+                <td>PAS DE GENRE</td>
+              }
+            </tr>
+          </tbody>
+        }
+      </table>
+    </div>
+  </div>
+</div>
