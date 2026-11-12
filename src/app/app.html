@@ -6,11 +6,22 @@
     </button>
     <ul class="dropdown-menu" [class.show]="menuOpen">
       <li><a class="dropdown-item" routerLink="/recherche-par-genre" (click)="menuOpen = false">Recherche par genre</a></li>
-  <li><a class="dropdown-item" routerLink="/recherche-par-pseudo" (click)="menuOpen = false">Recherche par pseudo (keyup)</a></li>
-  <li><a class="dropdown-item" routerLink="/recherche-par-pseudo-pipe" (click)="menuOpen = false">Recherche par pseudo (pipe)</a></li>
+      <li><a class="dropdown-item" routerLink="/recherche-par-pseudo" (click)="menuOpen = false">Recherche par pseudo (keyup)</a></li>
+      <li><a class="dropdown-item" routerLink="/recherche-par-pseudo-pipe" (click)="menuOpen = false">Recherche par pseudo (pipe)</a></li>
       <li><a class="dropdown-item" routerLink="/gamers" (click)="menuOpen = false">Accueil</a></li>
-      <li><a class="dropdown-item" routerLink="/add-gamer" (click)="menuOpen = false">Ajouter gamer</a></li>
+      @if (authService.isAdmin()) {
+        <li><a class="dropdown-item" routerLink="/add-gamer" (click)="menuOpen = false">Ajouter gamer</a></li>
+      }
     </ul>
   </div>
+
+  <ul class="navbar-nav ms-auto align-items-center">
+    @if (!authService.isloggedIn) {
+      <li class="nav-item"><a class="nav-link" routerLink="/login">Login</a></li>
+    } @else {
+      <li class="nav-item text-white me-3">[{{ authService.loggedUser }}]</li>
+      <li class="nav-item"><a class="nav-link" style="cursor: pointer" (click)="onLogout()">Logout</a></li>
+    }
+  </ul>
 </nav>
 <router-outlet />

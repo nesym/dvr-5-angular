@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { Gamer } from '../model/gamer.model';
 import { GamerService } from '../services/gamer.service';
+import { AuthService } from '../services/auth.service';
 import { ActionsComponent } from '../actions/actions.component';
 
 @Component({
@@ -13,7 +14,7 @@ import { ActionsComponent } from '../actions/actions.component';
 export class GamersComponent {
   gamers: Gamer[];
 
-  constructor(private gamerService: GamerService) {
+  constructor(private gamerService: GamerService, public authService: AuthService) {
     this.gamers = gamerService.listeGamers();
-}
+  }
 }

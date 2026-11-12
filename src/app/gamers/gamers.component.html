@@ -3,7 +3,10 @@
     <div class="card-body">
       <table class="table table-striped">
         <tr>
-          <th>N°</th><th>Id</th><th>Pseudo</th><th>Score</th><th>Date Inscription</th><th>Genre</th><th>Actions</th>
+          <th>N°</th><th>Id</th><th>Pseudo</th><th>Score</th><th>Date Inscription</th><th>Genre</th>
+          @if (authService.isAdmin()) {
+            <th>Actions</th>
+          }
         </tr>
         @for (gamer of gamers; track gamer.idGamer; let index = $index; let nbr = $count; let first = $first) {
           @if (first) {
@@ -17,7 +20,9 @@
               <td>{{gamer.scoreGamer}}</td>
               <td>{{gamer.dateInscription | date:'dd/MM/yyyy'}}</td>
               <td>{{gamer.genre?.nomGenre}}</td>
-              <td><app-actions [gamer]="gamer" /></td>
+              @if (authService.isAdmin()) {
+                <td><app-actions [gamer]="gamer" /></td>
+              }
             </tr>
           </tbody>
         } @empty {
